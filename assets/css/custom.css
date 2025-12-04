@@ -1,0 +1,100 @@
+/*
+  Custom CSS for Toko Online
+  Palette: 
+  - Primary Green: #004d40 (Deep Teal/Green)
+  - Accent: #ffc107 (Amber/Yellow)
+  - Light Gray: #f8f9fa
+  - Dark Gray: #343a40
+  - Text: #495057
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap');
+
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    background-color: #fdfdfd;
+    color: #495057;
+}
+
+/* --- Navbar --- */
+.navbar-custom {
+    background-color: #fff !important;
+    border-bottom: 1px solid #eee;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.navbar-custom .navbar-brand {
+    font-weight: 700;
+    color: #004d40;
+    font-size: 1.5rem;
+}
+
+.navbar-custom .nav-link {
+    color: #6c757d;
+    font-weight: 600;
+    transition: color 0.2s ease-in-out;
+}
+
+.navbar-custom .nav-link:hover, .navbar-custom .nav-link.active {
+    color: #004d40;
+}
+
+/* --- Jumbotron / Hero --- */
+.hero-section {
+    background-color: #e8f5e9; /* Light green */
+    border-radius: 0.5rem;
+}
+
+.hero-section .display-5 {
+    color: #004d40;
+}
+
+/* --- Product Card --- */
+.product-card {
+    border: 1px solid #eee;
+    border-radius: 0.5rem;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.1);
+}
+
+.product-card .card-title {
+    font-weight: 600;
+    color: #343a40;
+}
+
+.product-card .card-footer {
+    background-color: #fff;
+    border-top: 1px solid #eee;
+}
+
+.btn-primary {
+    background-color: #004d40;
+    border-color: #004d40;
+}
+
+.btn-primary:hover {
+    background-color: #00382e;
+    border-color: #00382e;
+}
+
+.btn-success {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #212529;
+}
+
+.btn-success:hover {
+    background-color: #e0a800;
+    border-color: #e0a800;
+}
+
+/* --- Admin Login --- */
+.login-card {
+    border: none;
+    box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,.07);
+}

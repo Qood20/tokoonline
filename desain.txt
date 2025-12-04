@@ -1,0 +1,135 @@
+Folder penting:
+
+/assets/img/ → untuk menyimpan gambar produk (minyak.jpg, beras.jpg, gas.jpg, bawang_putih.jpg, garam.jpg, gula.jpg).
+
+/frontend/ → halaman yang bisa diakses oleh user (beranda, produk, keranjang, list pesanan).
+
+/admin/ → halaman backend untuk admin mengelola produk & pesanan.
+
+/inc/ → koneksi database dan fungsi umum.
+
+Database: dbtokoonline (MySQL)
+Bahasa pemrograman: PHP
+Tampilan: Bootstrap 5 + sedikit JavaScript untuk interaktivitas (misalnya alert, validasi form).
+
+👨‍👩‍👦 Target Aplikasi
+
+User (Pelanggan): dapat melihat produk, memasukkan ke keranjang, checkout, dan melihat daftar pesanan mereka.
+
+Admin: dapat login, menambah produk baru, mengedit, menghapus, serta melihat dan mengubah status pesanan.
+
+🏠 Halaman untuk User
+
+Beranda (index.php)
+
+Header dengan nama toko (misalnya: Toko Kelontong Online).
+
+Navigasi ke: Beranda, Produk, Keranjang, Pesanan Saya.
+
+Carousel/banner gambar dengan Bootstrap (opsional).
+
+Deskripsi singkat toko.
+
+Layout (Bootstrap 5):
+
+Navbar di atas (fixed top).
+
+Hero Section dengan jumbotron.
+
+Footer dengan kontak.
+
+Produk (products.php)
+
+Grid card produk menggunakan row dan col-md-4.
+
+Setiap card menampilkan gambar produk (beras.jpg, minyak.jpg, dll), nama produk, harga, stok, dan tombol Tambah ke Keranjang.
+
+Search bar (opsional) untuk mencari produk.
+
+Layout (Bootstrap 5):
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="card">
+      <img src="assets/img/beras.jpg" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">Beras</h5>
+        <p class="card-text">Rp 50.000</p>
+        <button class="btn btn-primary">Tambah ke Keranjang</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+Keranjang (cart.php)
+
+Tabel daftar produk yang dipilih.
+
+Kolom: Gambar, Nama Produk, Harga, Qty, Subtotal, Aksi (hapus).
+
+Di bawah tabel: Total belanja + tombol Checkout.
+
+Layout (Bootstrap 5):
+
+Tabel dengan kelas .table .table-striped.
+
+Tombol checkout dengan .btn btn-success.
+
+Pesanan Saya (orders.php)
+
+User memasukkan email untuk melihat daftar pesanan.
+
+Daftar pesanan ditampilkan dalam card atau accordion.
+
+Status pesanan ditunjukkan dengan badge Bootstrap (badge bg-warning, badge bg-success, dll).
+
+🔑 Halaman untuk Admin
+
+Login (admin/login.php)
+
+Form sederhana username & password.
+
+Password tersimpan dalam database dengan enkripsi MD5.
+
+Jika berhasil login → redirect ke dashboard.
+
+Dashboard (admin/dashboard.php)
+
+Navigasi ke Kelola Produk dan Kelola Pesanan.
+
+Tampilan ringkas jumlah produk & jumlah pesanan.
+
+Kelola Produk (admin/products.php)
+
+CRUD produk (tambah, edit, hapus).
+
+Form tambah produk dengan input: nama, deskripsi, harga, stok, upload gambar.
+
+Tabel daftar produk.
+
+Kelola Pesanan (admin/orders.php)
+
+Tabel daftar pesanan dari user.
+
+Kolom: ID Pesanan, Nama User, Email, Total, Status, Aksi.
+
+Admin bisa update status pesanan (pending, diproses, selesai).
+
+🎨 Tampilan & Hiasan
+
+Gunakan Bootstrap 5 untuk layout responsif.
+
+Navbar fixed-top untuk navigasi.
+
+Card layout untuk produk.
+
+Table + badge untuk keranjang dan pesanan.
+
+Gunakan JavaScript untuk interaksi (misalnya notifikasi berhasil menambahkan produk ke keranjang, validasi form checkout, atau konfirmasi hapus).
+
+🔐 Keamanan
+
+Admin login dengan password disimpan dalam database menggunakan MD5 (sesuai permintaan, walau MD5 tidak disarankan di produksi).
+
+User hanya input nama & email saat checkout (tanpa login user, agar sederhana).
