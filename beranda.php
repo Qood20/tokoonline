@@ -1,6 +1,6 @@
 <div class="p-5 mb-4 rounded-3 hero-section">
     <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold">Selamat Datang di Toko Online Kami</h1>
+        <h1 class="display-5 fw-bold">Selamat Datang di Toko Online Kamu</h1>
         <p class="col-md-8 fs-4">Menyediakan berbagai kebutuhan pokok sehari-hari dengan kualitas terbaik dan harga terjangkau.</p>
         <a href="index.php?page=produk" class="btn btn-primary btn-lg">Lihat Semua Produk</a>
     </div>
