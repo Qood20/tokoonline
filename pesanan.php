@@ -1,41 +1,98 @@
-<h3>Riwayat Pesanan Anda</h3>
+<div class="pesanan-page">
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>No</th>
-            <th>Tanggal</th>
-            <th>Total</th>
-            <th>Status</th>
-            <th>Aksi</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-        // Asumsi id_pengguna didapat dari session setelah login
-        // Untuk pengetesan, kita gunakan id_pengguna statis dulu, misal 1
-        $id_pengguna = isset($_SESSION['id_pengguna']) ? $_SESSION['id_pengguna'] : 1; 
+<style>
+/* CSS KHUSUS HALAMAN PESANAN */
+.pesanan-page .pesanan-container {
+    background: #ffffff;
+    padding: 28px;
+    border-radius: 14px;
+    box-shadow: 0 0.5rem 1.2rem rgba(0,0,0,.08);
+    margin: 30px auto;
+}
 
-        $no = 1;
-        $query = mysqli_query($koneksi, "SELECT * FROM pesanan WHERE id_pengguna = '$id_pengguna' ORDER BY tanggal_pesanan DESC");
-        
-        if(mysqli_num_rows($query) > 0){
-            while($data = mysqli_fetch_array($query)){
-        ?>
-        <tr>
-            <td><?php echo $no++; ?></td>
-            <td><?php echo date('d M Y', strtotime($data['tanggal_pesanan'])); ?></td>
-            <td>Rp <?php echo number_format($data['total_pesanan']); ?></td>
-            <td><span class="badge bg-warning"><?php echo $data['status_pesanan']; ?></span></td>
-            <td>
-                <a href="index.php?page=detail_pesanan&id=<?php echo $data['id_pesanan']; ?>" class="btn btn-info btn-sm">Detail</a>
-            </td>
-        </tr>
-        <?php 
-            }
-        } else {
-            echo "<tr><td colspan='5' class='text-center'>Anda belum memiliki riwayat pesanan.</td></tr>";
-        }
-        ?>
-    </tbody>
-</table>
+.pesanan-page h3 {
+    font-weight: 700;
+    color: #004d40;
+    margin-bottom: 22px;
+    border-left: 5px solid #004d40;
+    padding-left: 14px;
+}
+
+.pesanan-page table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.pesanan-page thead {
+    background-color: #e8f5e9;
+}
+
+.pesanan-page th,
+.pesanan-page td {
+    padding: 14px;
+    border-bottom: 1px solid #eee;
+}
+
+.pesanan-page th {
+    color: #004d40;
+    font-weight: 600;
+}
+
+.pesanan-page tbody tr:hover {
+    background-color: #f5fbf8;
+}
+
+.pesanan-page .status {
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.pesanan-page .status.belum {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.pesanan-page .btn-detail {
+    background-color: #004d40;
+    color: #fff;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.pesanan-page .btn-detail:hover {
+    background-color: #00382e;
+}
+</style>
+
+<div class="pesanan-container">
+    <h3>Riwayat Pesanan Anda</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Tanggal</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>23 Feb 2026</td>
+                <td>Rp 25.000</td>
+                <td><span class="status belum">Belum Dibayar</span></td>
+                <td><a href="#" class="btn-detail">Detail</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</div>
