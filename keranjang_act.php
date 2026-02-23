@@ -19,11 +19,12 @@ if (isset($_GET['act'])) {
                 if (isset($_SESSION['keranjang'][$id_produk])) {
                     $_SESSION['keranjang'][$id_produk]['jumlah'] += $jumlah;
                 } else {
-                    // Jika keranjang belum ada
+                    // Jika keranjang belum ada - PERBAIKAN NAMA KOLOM
                     $_SESSION['keranjang'][$id_produk] = [
                         'id_produk' => $id_produk,
                         'nama_produk' => $produk['nama_produk'],
                         'harga_produk' => $produk['harga_produk'],
+                        'gambar' => $produk['foto_produk'],  // ← SESUAIKAN DENGAN DATABASE!
                         'jumlah' => $jumlah
                     ];
                 }
