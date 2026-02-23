@@ -1,17 +1,25 @@
 <?php
+session_start();
 include 'config/koneksi.php';
 
 $id_pengguna = null;
 
-if (isset($_SESSION['id_pengguna'])) {
-    // Jika pengguna sudah login, gunakan ID dari sesi
+// Jika pengguna sudah login, gunakan ID dari sesi
+if (isset($_SESSION['id_pengguna']) && !empty($_SESSION['id_pengguna'])) {
     $id_pengguna = $_SESSION['id_pengguna'];
 } else {
     // Jika pengguna belum login, ambil data dari form
-    $nama_pengguna = $_POST['nama_pengguna'];
-    $email_pengguna = $_POST['email_pengguna'];
-    $telepon_pengguna = $_POST['telepon_pengguna'];
-    $alamat_pengguna = $_POST['alamat_pengguna'];
+    $nama_pengguna = isset($_POST['nama_pengguna']) ? $_POST['nama_pengguna'] : '';
+    $email_pengguna = isset($_POST['email_pengguna']) ? $_POST['email_pengguna'] : '';
+    $telepon_pengguna = isset($_POST['telepon_pengguna']) ? $_POST['telepon_pengguna'] : '';
+    $alamat_pengguna = isset($_POST['alamat_pengguna']) ? $_POST['alamat_pengguna'] : '';
+
+    // Validasi data tidak boleh kosong
+    if (empty($nama_pengguna) || empty($email_pengguna)) {
+        echo "<script>alert('Data diri tidak boleh kosong. Silakan coba lagi.');</script>";
+        echo "<script>location='index.php?page=checkout';</script>";
+        exit();
+    }
 
     // Cek apakah email sudah ada di database (mungkin pengguna lama tapi tidak login)
     $query_cek_pengguna = mysqli_query($koneksi, "SELECT id_pengguna FROM pengguna WHERE email_pengguna = '$email_pengguna'");

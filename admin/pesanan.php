@@ -6,6 +6,8 @@
             <th>No</th>
             <th>ID Pesanan</th>
             <th>Nama Pelanggan</th>
+            <th>Email</th>
+            <th>Telepon</th>
             <th>Tanggal</th>
             <th>Total</th>
             <th>Status</th>
@@ -15,14 +17,17 @@
     <tbody>
         <?php
         $no = 1;
-        $query = mysqli_query($koneksi, "SELECT * FROM pesanan JOIN pengguna ON pesanan.id_pengguna = pengguna.id_pengguna ORDER BY pesanan.id_pesanan DESC");
-        if(mysqli_num_rows($query) > 0){
+        $query = mysqli_query($koneksi, "SELECT pesanan.*, pengguna.nama_pengguna, pengguna.email_pengguna, pengguna.telepon_pengguna FROM pesanan JOIN pengguna ON pesanan.id_pengguna = pengguna.id_pengguna ORDER BY pesanan.id_pesanan DESC");
+        
+        if($query && mysqli_num_rows($query) > 0){
             while($data = mysqli_fetch_array($query)){
         ?>
         <tr>
             <td><?php echo $no++; ?></td>
             <td>#<?php echo $data['id_pesanan']; ?></td>
             <td><?php echo $data['nama_pengguna']; ?></td>
+            <td><?php echo $data['email_pengguna']; ?></td>
+            <td><?php echo $data['telepon_pengguna']; ?></td>
             <td><?php echo date('d M Y', strtotime($data['tanggal_pesanan'])); ?></td>
             <td>Rp <?php echo number_format($data['total_pesanan']); ?></td>
             <td>
@@ -43,10 +48,14 @@
                 <a href="index.php?page=pesanan_detail&id=<?php echo $data['id_pesanan']; ?>" class="btn btn-info btn-sm">Detail</a>
             </td>
         </tr>
-        <?php 
+        <?php
             }
         } else {
-            echo "<tr><td colspan='7' class='text-center'>Belum ada pesanan yang masuk.</td></tr>";
+            if(!$query){
+                echo "<tr><td colspan='9' class='text-center text-danger'>Error query: ".mysqli_error($koneksi)."</td></tr>";
+            } else {
+                echo "<tr><td colspan='9' class='text-center'>Belum ada pesanan yang masuk.</td></tr>";
+            }
         }
         ?>
     </tbody>
