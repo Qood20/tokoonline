@@ -1,4 +1,4 @@
-<?php 
+<?php
 include 'header.php';
 
 if (isset($_GET['page'])) {
@@ -8,8 +8,17 @@ if (isset($_GET['page'])) {
         case 'produk':
             include 'produk.php';
             break;
+        case 'produk_tambah':
+            include 'produk_tambah.php';
+            break;
+        case 'produk_edit':
+            include 'produk_edit.php';
+            break;
         case 'pesanan':
             include 'pesanan.php';
+            break;
+        case 'pesanan_detail':
+            include 'pesanan_detail.php';
             break;
         case 'dashboard':
         default:

@@ -6,7 +6,7 @@ if (session_status() == PHP_SESSION_NONE) {
 $host = "localhost";
 $user = "root";
 $pass = "";
-$db   = "dbtokoonline";
+$db   = "db_tokoqod";
 
 $koneksi = mysqli_connect($host, $user, $pass, $db);
 
